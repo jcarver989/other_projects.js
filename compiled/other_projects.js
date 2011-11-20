@@ -12,7 +12,7 @@
         style.attr({
           type: "text/css",
           rel: "stylesheet",
-          href: "https://raw.github.com/jcarver989/other_projects.js/master/css/other_projects.css"
+          href: "http://jcarver989.github.com/other_projects.js/css/other_projects.css"
         });
         return $("head").append(style);
       };
