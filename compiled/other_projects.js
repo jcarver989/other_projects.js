@@ -47,11 +47,7 @@
         column_index = 0;
         while (start < num_repos) {
           for (index = start; start <= end ? index <= end : index >= end; start <= end ? index++ : index--) {
-            console.log(column_index);
-            
             column = columns[column_index];
-            console.log(columns);
-            console.log(column);
             column.append($(repo_html(repos[index])));
           }
           start += step_size;
