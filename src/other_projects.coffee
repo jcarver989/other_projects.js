@@ -42,7 +42,7 @@ main = ->
       end   = step_size-1
       column_index = 0
 
-      while start < num_repos
+      while start < num_repos && column_index < num_columns
         for index in [start..end]
           column = columns[column_index]
           column.append $(repo_html(repos[index]))
@@ -51,6 +51,7 @@ main = ->
         end   = start + step_size-1
         column_index +=1
      
+      column_index = num_columns-1
       while start < num_repos
         columns[column_index].append $(repo_html(repos[start]))
         start += 1

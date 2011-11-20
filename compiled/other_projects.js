@@ -45,7 +45,7 @@
         start = 0;
         end = step_size - 1;
         column_index = 0;
-        while (start < num_repos) {
+        while (start < num_repos && column_index < num_columns) {
           for (index = start; start <= end ? index <= end : index >= end; start <= end ? index++ : index--) {
             column = columns[column_index];
             column.append($(repo_html(repos[index])));
@@ -54,6 +54,7 @@
           end = start + step_size - 1;
           column_index += 1;
         }
+        column_index = num_columns - 1;
         while (start < num_repos) {
           columns[column_index].append($(repo_html(repos[start])));
           start += 1;
