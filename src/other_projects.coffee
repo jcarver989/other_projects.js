@@ -74,10 +74,9 @@ main = ->
 
           setTimeout(() ->
             row.slideUp(200)
-            row.fadeOut(200)
           ,250)
         else
-          row.slideDown(200, () ->
+          row.slideDown(300, () ->
             column.fadeIn(200) for column in columns
           )
       

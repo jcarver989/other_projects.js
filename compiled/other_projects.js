@@ -77,11 +77,10 @@
               column.fadeOut(200);
             }
             return setTimeout(function() {
-              row.slideUp(200);
-              return row.fadeOut(200);
+              return row.slideUp(200);
             }, 250);
           } else {
-            return row.slideDown(200, function() {
+            return row.slideDown(300, function() {
               var column, _j, _len2, _results;
               _results = [];
               for (_j = 0, _len2 = columns.length; _j < _len2; _j++) {
