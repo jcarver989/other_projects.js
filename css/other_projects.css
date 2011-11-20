@@ -1,0 +1,89 @@
+body {
+  padding-top: 30px;
+}
+
+
+#otherProjects {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: #333;
+  -moz-box-shadow: 0 2px 5px rgba(0,0,0,.4);
+  background: rgba(0,0,0,.8);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#otherProjects h2 {
+  font-weight: bold;
+  margin: 0;
+  padding:0;
+  font-size: 16px;
+  font-weight: normal;
+  cursor: pointer;
+  color: #fff;
+  text-align: center;
+}
+
+#otherProjects a {
+  color: #333;
+}
+
+
+#otherProjects div.row {
+  margin: 0;
+  padding:0;
+  display: none;
+  background: #eee;
+}
+
+#otherProjects div.row:after  {
+  display: block;
+  clear: both;
+  content: ".";
+  visibility: hidden;
+  height: 0; }
+ 
+.one-third {
+  width: 30%; }
+
+
+.column, .columns {
+  margin: 0 0 0 20px;
+  padding: 0;
+  float: left; }
+  .column:first-child, .columns:first-child {
+    margin-left: 0; }
+
+#otherProjects dl {
+  list-style: none;
+  margin: 0;
+  padding: 10px 20px;
+}
+
+#otherProjects dl dt {
+  display: block;
+  font-weight: bold;
+  margin: 0;
+  font-size: 16px;
+}
+
+#otherProjects dl dd {
+  margin: 0;
+  color: #555;
+  font-size: 14px;
+}
+
+#otherProjects a {
+  display: block;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  padding: 8px;
+}
+
+#otherProjects a:hover {
+  background: #ddd;
+}
+
+
+
