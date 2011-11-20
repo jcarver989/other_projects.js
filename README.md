@@ -16,4 +16,4 @@ Just place the following code on your website
             window.github_username = "jcarver989";
         </script>
 
-        <script type="text/javascript" src=""></script>
+        <script type="text/javascript" src="https://raw.github.com/jcarver989/other_projects.js/master/compiled/other_projects.js"></script>
