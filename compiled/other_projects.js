@@ -1,29 +1,6 @@
 (function() {
   var execute_main, github_api_url, jquery_url, load_script, main;
 
-  load_script = function(src, onload_callback) {
-    var script;
-    script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src = src;
-    if (onload_callback != null) script.onload = onload_callback;
-    return document.getElementsByTagName("head")[0].appendChild(script);
-  };
-
-  jquery_url = "http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js";
-
-  github_api_url = "https://raw.github.com/jcarver989/GithubApi.js/master/github_api.js";
-
-  execute_main = function() {
-    return load_script(github_api_url, main);
-  };
-
-  if (typeof jQuery === "undefined") {
-    load_script(jquery_url, execute_main);
-  } else {
-    execute_main();
-  }
-
   main = function() {
     return $(document).ready(function() {
       var add_repo_info_to_bar, api, create_columns, create_header, extract_repo_info, inject_css, repo_html, user;
@@ -35,7 +12,7 @@
         style.attr({
           type: "text/css",
           rel: "stylesheet",
-          href: "other_projects.css"
+          href: "https://raw.github.com/jcarver989/other_projects.js/master/css/other_projects.css"
         });
         return $("head").append(style);
       };
@@ -133,5 +110,28 @@
       });
     });
   };
+
+  load_script = function(src, onload_callback) {
+    var script;
+    script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = src;
+    if (onload_callback != null) script.onload = onload_callback;
+    return document.getElementsByTagName("head")[0].appendChild(script);
+  };
+
+  jquery_url = "http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js";
+
+  github_api_url = "https://raw.github.com/jcarver989/GithubApi.js/master/github_api.js";
+
+  execute_main = function() {
+    return load_script(github_api_url, main);
+  };
+
+  if (typeof jQuery === "undefined") {
+    load_script(jquery_url, execute_main);
+  } else {
+    execute_main();
+  }
 
 }).call(this);

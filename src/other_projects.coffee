@@ -1,15 +1,5 @@
-load_script = (src, onload_callback) ->
-  script = document.createElement("script")
-  script.type = "text/javascript"
-  script.src = src
-  script.onload = onload_callback if onload_callback?
-  document.getElementsByTagName("head")[0].appendChild(script)
 
-jquery_url     = "http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"
-github_api_url = "https://raw.github.com/jcarver989/GithubApi.js/master/github_api.js"
-execute_main = -> load_script github_api_url, main
 
-if typeof jQuery == "undefined" then load_script(jquery_url, execute_main) else execute_main()
 
 main = ->
   $(document).ready ->
@@ -98,3 +88,18 @@ main = ->
 
       list = (extract_repo_info(repo) for repo in sorted)
       add_repo_info_to_bar(list)
+
+load_script = (src, onload_callback) ->
+  script = document.createElement("script")
+  script.type = "text/javascript"
+  script.src = src
+  script.onload = onload_callback if onload_callback?
+  document.getElementsByTagName("head")[0].appendChild(script)
+
+jquery_url     = "http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"
+github_api_url = "https://raw.github.com/jcarver989/GithubApi.js/master/github_api.js"
+
+execute_main = ->
+  load_script(github_api_url, main)
+
+if typeof jQuery == "undefined" then load_script(jquery_url, execute_main) else execute_main()
