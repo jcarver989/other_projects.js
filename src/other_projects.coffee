@@ -36,7 +36,7 @@ main = ->
     create_columns = (repos, num_columns = 3) ->
       num_repos = repos.length
       step_size = Math.round(num_repos / num_columns)
-      columns = ($("<dl class='one-third column'>") for i in [0..num_columns-1])
+      columns = ($("<dl class='one-third column' style='display:none;'>") for i in [0..num_columns-1])
 
       start = 0
       end   = step_size-1
@@ -66,13 +66,22 @@ main = ->
       info.append header 
       row = $("<div class='row'>")
 
+      columns = create_columns(repos)
+
       header.click (e) ->
         if row.is(":visible")
-          row.slideUp(200)
+          column.fadeOut(200) for column in columns
+
+          setTimeout(() ->
+            row.slideUp(200)
+            row.fadeOut(200)
+          ,250)
         else
-          row.slideDown(200)
+          row.slideDown(200, () ->
+            column.fadeIn(200) for column in columns
+          )
       
-      row.append(column) for column in create_columns(repos)
+      row.append(column) for column in columns
       info.append row
 
       bar = $("<div id='otherProjects'>")

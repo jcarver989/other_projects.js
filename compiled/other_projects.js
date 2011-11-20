@@ -38,7 +38,7 @@
           var _ref, _results;
           _results = [];
           for (i = 0, _ref = num_columns - 1; 0 <= _ref ? i <= _ref : i >= _ref; 0 <= _ref ? i++ : i--) {
-            _results.push($("<dl class='one-third column'>"));
+            _results.push($("<dl class='one-third column' style='display:none;'>"));
           }
           return _results;
         })();
@@ -62,22 +62,38 @@
         return columns;
       };
       add_repo_info_to_bar = function(repos) {
-        var bar, column, header, info, row, _i, _len, _ref;
+        var bar, column, columns, header, info, row, _i, _len;
         inject_css();
         info = $("<div class='info'></div>");
         header = create_header();
         info.append(header);
         row = $("<div class='row'>");
+        columns = create_columns(repos);
         header.click(function(e) {
+          var column, _i, _len;
           if (row.is(":visible")) {
-            return row.slideUp(200);
+            for (_i = 0, _len = columns.length; _i < _len; _i++) {
+              column = columns[_i];
+              column.fadeOut(200);
+            }
+            return setTimeout(function() {
+              row.slideUp(200);
+              return row.fadeOut(200);
+            }, 250);
           } else {
-            return row.slideDown(200);
+            return row.slideDown(200, function() {
+              var column, _j, _len2, _results;
+              _results = [];
+              for (_j = 0, _len2 = columns.length; _j < _len2; _j++) {
+                column = columns[_j];
+                _results.push(column.fadeIn(200));
+              }
+              return _results;
+            });
           }
         });
-        _ref = create_columns(repos);
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          column = _ref[_i];
+        for (_i = 0, _len = columns.length; _i < _len; _i++) {
+          column = columns[_i];
           row.append(column);
         }
         info.append(row);
