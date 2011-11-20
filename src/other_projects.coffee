@@ -21,7 +21,7 @@ main = ->
       style.attr {
         type: "text/css"
         rel: "stylesheet"
-        href: "other_projects.css"
+        href: "https://raw.github.com/jcarver989/other_projects.js/master/css/other_projects.css"
       }
 
       $("head").append style
