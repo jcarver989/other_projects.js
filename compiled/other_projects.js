@@ -1,6 +1,5 @@
 (function() {
   var execute_main, github_api_url, jquery_url, load_script, main;
-
   main = function() {
     return $(document).ready(function() {
       var add_repo_info_to_bar, api, create_columns, create_header, extract_repo_info, inject_css, repo_html, user;
@@ -31,7 +30,9 @@
       };
       create_columns = function(repos, num_columns) {
         var column, column_index, columns, end, i, index, num_repos, start, step_size;
-        if (num_columns == null) num_columns = 3;
+        if (num_columns == null) {
+          num_columns = 3;
+        }
         num_repos = repos.length;
         step_size = Math.round(num_repos / num_columns);
         columns = (function() {
@@ -47,8 +48,10 @@
         column_index = 0;
         while (start < num_repos && column_index < num_columns) {
           for (index = start; start <= end ? index <= end : index >= end; start <= end ? index++ : index--) {
-            column = columns[column_index];
-            column.append($(repo_html(repos[index])));
+            if (repos[index] != null) {
+              column = columns[column_index];
+              column.append($(repo_html(repos[index])));
+            }
           }
           start += step_size;
           end = start + step_size - 1;
@@ -106,7 +109,9 @@
           var a_name, b_name;
           a_name = a.name;
           b_name = b.name;
-          if (a_name === b_name) return 0;
+          if (a_name === b_name) {
+            return 0;
+          }
           if (a_name > b_name) {
             return 1;
           } else {
@@ -126,28 +131,24 @@
       });
     });
   };
-
   load_script = function(src, onload_callback) {
     var script;
     script = document.createElement("script");
     script.type = "text/javascript";
     script.src = src;
-    if (onload_callback != null) script.onload = onload_callback;
+    if (onload_callback != null) {
+      script.onload = onload_callback;
+    }
     return document.getElementsByTagName("head")[0].appendChild(script);
   };
-
   jquery_url = "http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js";
-
   github_api_url = "https://raw.github.com/jcarver989/GithubApi.js/master/github_api.js";
-
   execute_main = function() {
     return load_script(github_api_url, main);
   };
-
   if (typeof jQuery === "undefined") {
     load_script(jquery_url, execute_main);
   } else {
     execute_main();
   }
-
 }).call(this);

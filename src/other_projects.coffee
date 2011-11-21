@@ -43,7 +43,7 @@ main = ->
       column_index = 0
 
       while start < num_repos && column_index < num_columns
-        for index in [start..end]
+        for index in [start..end] when repos[index]?
           column = columns[column_index]
           column.append $(repo_html(repos[index]))
 
