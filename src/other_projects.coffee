@@ -95,7 +95,7 @@ main = ->
         return 0 if a_name == b_name
         if (a_name > b_name) then 1 else -1
 
-      list = (extract_repo_info(repo) for repo in sorted)
+      list = (extract_repo_info(repo) for repo in sorted when !repo.fork)
       add_repo_info_to_bar(list)
 
 load_script = (src, onload_callback) ->

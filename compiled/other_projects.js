@@ -123,7 +123,9 @@
           _results = [];
           for (_i = 0, _len = sorted.length; _i < _len; _i++) {
             repo = sorted[_i];
-            _results.push(extract_repo_info(repo));
+            if (!repo.fork) {
+              _results.push(extract_repo_info(repo));
+            }
           }
           return _results;
         })();
